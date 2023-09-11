@@ -12,20 +12,32 @@ import java.util.EnumMap;
  */
 public class Menu {
     enum Platillo{
-            SPAGHETTI,
-            PIZZA,
-            SOPA
+            SPAGHETTI (1),
+            PIZZA (3),
+            SOPA (4);
+            
+            private int precio;
+            
+            private Platillo(int precio){
+                this.precio = precio;
+            } 
         }
     
     public static void crearMap(){
      //Instanciar un objeto de un Enum:
-        Menu.Platillo sopa = Menu.Platillo.SOPA;
+        Platillo sopa = Platillo.SOPA;
         
         //Instanciar un EnumMap
         EnumMap<Platillo, String> menuMap = new EnumMap<>(Platillo.class);
         menuMap.put(Platillo.PIZZA, "25000$");
         menuMap.put(Platillo.SPAGHETTI, "18000$");
+        menuMap.put(Platillo.SPAGHETTI, "17000$");
         System.out.println(menuMap);
+        //Get
+        System.out.println(menuMap.get(Platillo.PIZZA));
+        System.out.println(menuMap.get(Platillo.SOPA));
+        //Remove
+        System.out.println("Se eliminó: " + menuMap.remove(Platillo.PIZZA));
     }
       
 }
