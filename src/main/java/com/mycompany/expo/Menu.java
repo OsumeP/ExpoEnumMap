@@ -12,18 +12,18 @@ import java.util.EnumMap;
  */
 public class Menu {
     enum Platillo{
-            SPAGHETTI (1),
-            PIZZA (3),
-            SOPA (4);
-            
+            SPAGHETTI,
+            PIZZA,
+            SOPA;
+            /*
             private int precio;
             
             private Platillo(int precio){
                 this.precio = precio;
-            } 
+            } */
         }
     
-    public static void crearMap(){
+    public static EnumMap<Platillo, String> crearMap(){
      //Instanciar un objeto de un Enum:
         Platillo sopa = Platillo.SOPA;
         
@@ -33,11 +33,38 @@ public class Menu {
         menuMap.put(Platillo.SPAGHETTI, "18000$");
         menuMap.put(Platillo.SPAGHETTI, "17000$");
         System.out.println(menuMap);
-        //Get
-        System.out.println(menuMap.get(Platillo.PIZZA));
-        System.out.println(menuMap.get(Platillo.SOPA));
+        
+        return menuMap;
         //Remove
-        System.out.println("Se eliminó: " + menuMap.remove(Platillo.PIZZA));
+        //System.out.println("Se eliminó: " + menuMap.remove(Platillo.PIZZA));
     }
+    
+    public static String getValue(EnumMap<Platillo, String> menu, Platillo value){
+        try{
+            String recoverValue = menu.get(value);
+            if (recoverValue != null){
+                System.out.println("Valor recuperado: " + recoverValue);
+                return recoverValue;
+            }
+            System.out.println("No había nada");
+        }catch (Exception ex){
+            System.out.println("error: " + ex);
+        }
+        return "No hay nada";
+    }
+    
+    public static void deleteValue(EnumMap<Platillo, String> menu, Platillo value){
+        try{
+            String deletedValue = menu.remove(value);
+            if (deletedValue != null){
+                System.out.println("Valor eliminado: " + deletedValue);
+            }else{
+                System.out.println("No había nada");
+            }
+        }catch (Exception ex){
+            System.out.println("error: " + ex);
+        }
+    }
+    
       
 }
